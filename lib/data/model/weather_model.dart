@@ -1,17 +1,17 @@
 class WeatherModel {
-  final Coordinates coordinates;
-  final List<Weather> weatherData;
-  final String base;
-  final MainData main;
-  final int visibility;
-  final Wind wind;
-  final Clouds clouds;
-  final int dt;
-  final Sys sys;
-  final int timezone;
-  final int id;
-  final String name;
-  final int cod;
+  final Coordinates? coordinates;
+  final List<Weather>? weatherData;
+  final String? base;
+  final MainData? main;
+  final int? visibility;
+  final Wind? wind;
+  final Clouds? clouds;
+  final int? dt;
+  final Sys? sys;
+  final int? timezone;
+  final int? id;
+  final String? name;
+  final int? cod;
 
   WeatherModel({
     required this.coordinates,
@@ -39,7 +39,7 @@ class WeatherModel {
       wind: Wind.fromJson(json['wind']),
       clouds: Clouds.fromJson(json['clouds']),
       dt: json['dt'],
-      sys: Sys.fromJson(json['sys']),
+      sys: json['sys']==null?null:Sys.fromJson(json['sys']),
       timezone: json['timezone'],
       id: json['id'],
       name: json['name'],
@@ -49,8 +49,8 @@ class WeatherModel {
 }
 
 class Coordinates {
-  final double lon;
-  final double lat;
+  final double? lon;
+  final double? lat;
 
   Coordinates({required this.lon, required this.lat});
 
@@ -63,10 +63,10 @@ class Coordinates {
 }
 
 class Weather {
-  final int id;
-  final String main;
-  final String description;
-  final String icon;
+  final int? id;
+  final String? main;
+  final String? description;
+  final String? icon;
 
   Weather({required this.id, required this.main, required this.description, required this.icon});
 
@@ -136,15 +136,15 @@ class Clouds {
 }
 
 class Sys {
-  final int type;
-  final int id;
+ // final int type;
+ // final int id;
   final String country;
   final int sunrise;
   final int sunset;
 
   Sys({
-    required this.type,
-    required this.id,
+   // required this.type,
+   // required this.id,
     required this.country,
     required this.sunrise,
     required this.sunset,
@@ -152,8 +152,8 @@ class Sys {
 
   factory Sys.fromJson(Map<String, dynamic> json) {
     return Sys(
-      type: json['type'],
-      id: json['id'],
+    //  type: json['type'] ?? null,
+    //  id: json['id'],
       country: json['country'],
       sunrise: json['sunrise'],
       sunset: json['sunset'],

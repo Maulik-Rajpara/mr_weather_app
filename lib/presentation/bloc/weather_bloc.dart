@@ -16,7 +16,8 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       try {
         final weather = await weatherRepository.fetchWeather(event.query);
         emit(WeatherLoaded(weather: weather));
-      } catch (e) {
+      } catch (e,s) {
+        print("e $e $s");
         emit(WeatherError(errorMessage: e.toString()));
       }
     });
